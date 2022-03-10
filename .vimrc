@@ -1,6 +1,3 @@
-" I accidentally delted this the other day. Luckily, it was still open in a text editor, thank god. Now I'm storing it on github. Also gives me an excuse to learn how to ues github properly!
-"
-"
 " <F3>  :  Open vertical terminal
 " <F4>  :  Save all and make (build) program using makefile
 " <F5>  :  Save file and compile and/or run program (for C, CPP and Python)
@@ -52,6 +49,7 @@ Plugin 'https://github.com/preservim/nerdtree.git'
 " ColorScheme 
 Plugin 'https://github.com/mhartington/oceanic-next.git'
 
+" A cool status bar
 Plugin 'https://github.com/itchyny/lightline.vim.git'
 
 call vundle#end()            " required
@@ -165,5 +163,7 @@ autocmd VimEnter * highlight Pmenu ctermbg=gray
 
 " Required for lightline status bar
 set laststatus=2
-"set noshowmode
-
+set noshowmode
+let g:lightline = {
+    \ 'colorscheme' : 'solarized'
+    \ }
