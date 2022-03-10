@@ -1,14 +1,17 @@
 " I accidentally delted this the other day. Luckily, it was still open in a text editor, thank god. Now I'm storing it on github. Also gives me an excuse to learn how to ues github properly!
 "
 "
-" <F3>   :    make
-" <F4>   :    open terminal in vsplit
-" <F5>   :    compile and/or run program
-" <F6>   :    open or create makefile in vsplit
-" <F7>   :    run c/cpp program, as long as it has the same name as the file
-" <F8>   :    compile without running
-
-
+" <F3>  :  Open vertical terminal
+" <F4>  :  Save all and make (build) program using makefile
+" <F5>  :  Save file and compile and/or run program (for C, CPP and Python)
+" <F6>  :  Save all and make (build) and run C/CPP program (assumes exe named
+"          'main')
+" <F7>  :  Compile file without running
+" <F8>  :  Run executable without compiling (assumes there is already an
+"          executable named the same as the file)
+" <C-h> :  Opens or creates header file with the same name as the c file
+" <C-n> :  Opens or creates a Makefile 
+" 
 
 """""""""" REQUIRED FOR VUNDLE, DO NOT DELETE!!! """"""""""""
 
@@ -92,30 +95,42 @@ let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_posix_standard = 1
 
+"""""""""""""""""" KEYMAPS """"""""""""""""""
+inoremap jk <ESC> 
+map gh :w <cr> 
+map fj :wq <cr> 
 
-" keymaps
-inoremap jk <ESC>
-map gh :w <cr>
-map fj :wq <cr>
-map <C-h> :vsplit %<.hpp <cr>
-map <C-m> :vsplit Makefile <cr>
+" open vertical terminal
+map <F3> :vert :term <cr>
 
-" compiler commands
-"map <F5> :w <cr> :!g++ % -o %< && ./%< && echo
-map <F3> :make <cr>
-map <F4> :vert :term <cr>
+" build c/cpp
+autocmd FileType cpp nnoremap <F4> :wa <cr> :!make && echo <cr>
+autocmd FileType cpp nnoremap <F4> :wa <cr> :!make && echo <cr>
 
-" STILL GOT <F9><F10><F11><F12> TO CONFIGURE!!!  " keymapping to compile and/or run based on filetype autocmd FileType python nnoremap <F5> :w <cr> :!python % & <cr>
+" compile and/or run (for c, cpp and python)
 autocmd FileType cpp nnoremap <F5> :w <cr> :!g++ % -o %< && ./%< && echo <cr>
 autocmd FileType c nnoremap <F5> :w <cr> :!gcc % -o %< && ./%< && echo <cr>
+autocmd Filetype python nnoremap <F5> :w <cr> :!python % && echo <cr>
 
-" run c/cpp programs without compiling
-autocmd FileType cpp nnoremap <F7> :!./%< && echo <cr>
-autocmd FileType c nnoremap <F7> :!./%< && echo <cr>
+" build and run c/cpp (assumes executable is named 'main')
+autocmd FileType cpp nnoremap <F6> :wa <cr> :!make && ./main && echo <cr> 
+autocmd FileType c nnoremap <F6> :wa <cr> :!make && ./main && echo <cr>
 
-" compile c/cpp programs without running
-autocmd FileType cpp nnoremap <F8> :!g++ % -o %< & <cr> 
-autocmd FileType c nnoremap <F8> :!gcc % -o %< & <cr> 
+" compile without running
+autocmd FileType cpp nnoremap <F7> :w <cr> :!g++ % -o %< && echo <cr>
+autocmd FileType c nnoremap <F7> :w <cr> :!gcc % -o %< && echo <cr>
+
+" run without compiling (assumes there is already an executable)
+autocmd FileType cpp nnoremap <F8> :!./%< && echo <cr>
+autocmd FileType c nnoremap <F8> :!./%< && echo <cr>
+
+" c and cpp header file
+autocmd FileType c nnoremap <C-h> :vsplit %<.h <cr>
+autocmd FileType cpp nnoremap <C-h> :vsplit %<.hpp <cr>
+
+" makefile
+autocmd FileType c nnoremap <C-n> :vsplit Makefile <cr>
+autocmd FileType cpp nnoremap <C-n> :vsplit Makefile <cr>
 
 
 " prevents addition of extra files
@@ -150,5 +165,5 @@ autocmd VimEnter * highlight Pmenu ctermbg=gray
 
 " Required for lightline status bar
 set laststatus=2
-set noshowmode
+"set noshowmode
 
