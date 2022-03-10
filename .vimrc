@@ -1,7 +1,6 @@
-" I accidentally delted this the other day. Luckily, it was still open 
-" in a text editor, thank god. Now I'm storing it on github. Also gives 
-" me an excuse to learn how to ues github properly!
-"TEST..
+" I accidentally delted this the other day. Luckily, it was still open in a text editor, thank god. Now I'm storing it on github. Also gives me an excuse to learn how to ues github properly!
+"
+"
 " <F3>   :    make
 " <F4>   :    open terminal in vsplit
 " <F5>   :    compile and/or run program
@@ -9,8 +8,6 @@
 " <F7>   :    run c/cpp program, as long as it has the same name as the file
 " <F8>   :    compile without running
 
-set laststatus=2
-set noshowmode
 
 
 """""""""" REQUIRED FOR VUNDLE, DO NOT DELETE!!! """"""""""""
@@ -21,19 +18,11 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-"Plugin 'ycm-core/YouCompleteMe'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-
+" github manager
 Plugin 'tpope/vim-fugitive'
 
 " syntax highlighter
@@ -62,23 +51,8 @@ Plugin 'https://github.com/mhartington/oceanic-next.git'
 
 Plugin 'https://github.com/itchyny/lightline.vim.git'
 
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-
-
 
 
 """"""""""""""""""""STUFF FOR SYNTASTIC PLUGIN""""""""""""""""""""
@@ -94,8 +68,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_balloons = 1
 let g:syntastic_auto_jump = 1
 let g:syntastic_loc_list_height = 5
-
-
 
 
 """"""""""""""""""""""""""" MAIN EDITOR STUFF """""""""""""""
@@ -146,19 +118,17 @@ autocmd FileType cpp nnoremap <F8> :!g++ % -o %< & <cr>
 autocmd FileType c nnoremap <F8> :!gcc % -o %< & <cr> 
 
 
-" normal mode commands
-
 " prevents addition of extra files
 set noswapfile
 set nobackup
 
 " editor stuff
-set expandtab " convert tabs to 4 spaces"
 set belloff=all
 set backspace=2
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set expandtab " convert tabs to 4 spaces"
 
 " coding stuff
 set autoindent
@@ -178,4 +148,7 @@ set mouse=a
 " this changes the color of the autocomplete menu
 autocmd VimEnter * highlight Pmenu ctermbg=gray
 
+" Required for lightline status bar
+set laststatus=2
+set noshowmode
 
