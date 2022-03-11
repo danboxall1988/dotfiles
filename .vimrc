@@ -113,8 +113,8 @@ autocmd FileType c nnoremap <F4> :wa <cr> :!make && echo <cr>
 
 " compile and/or run (for c, cpp and python)
 autocmd FileType cpp nnoremap <F5> :w <cr> :!g++ % -o %< && ./%< && echo <cr>
-autocmd FileType c nnoremap <F5> :w <cr> :!gcc % -o %< && ./%< && echo <cr>
-autocmd Filetype python nnoremap <F5> :w <cr> :!python % && echo <cr>
+autocmd FileType c nnoremap <F5> :w <cr> :!gcc % -o %< && ./%< && echo<cr>
+autocmd Filetype python nnoremap <F5> :w <cr> :!python % <cr>
 
 " build and run c/cpp (assumes executable is named 'main')
 autocmd FileType cpp nnoremap <F6> :wa <cr> :!make && ./main && echo <cr> 
