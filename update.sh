@@ -7,7 +7,7 @@ then
     exit 1
 fi
 
-# ensure all files are real exist
+# ensure all files exist
 for file in $*
 do
     if [ ! -f "$file" ]
