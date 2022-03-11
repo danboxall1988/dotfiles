@@ -9,7 +9,7 @@
 " <C-h> :  Opens or creates header file with the same name as the c file
 " <C-n> :  Opens or creates a Makefile 
 " 
-
+"testing...""
 """""""""" REQUIRED FOR VUNDLE, DO NOT DELETE!!! """"""""""""
 
 set nocompatible              " be iMproved, required
