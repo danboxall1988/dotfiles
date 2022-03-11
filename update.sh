@@ -31,7 +31,6 @@ do
         ((++wins))
     fi
 done
-printf "\n\n fails = $fails\n\n"
 
 
 # if any of the files are non-existent, exit
