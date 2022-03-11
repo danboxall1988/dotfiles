@@ -1,3 +1,4 @@
+" <F2>  :  Open horizontal terminal
 " <F3>  :  Open vertical terminal
 " <F4>  :  Save all and make (build) program using makefile
 " <F5>  :  Save file and compile and/or run program (for C, CPP and Python)
@@ -9,7 +10,8 @@
 " <C-h> :  Opens or creates header file with the same name as the c file
 " <C-n> :  Opens or creates a Makefile 
 " 
-"testing...""
+
+
 """""""""" REQUIRED FOR VUNDLE, DO NOT DELETE!!! """"""""""""
 
 set nocompatible              " be iMproved, required
@@ -98,6 +100,9 @@ inoremap jk <ESC>
 vnoremap jk <ESC>
 map gh :w <cr> 
 map fj :wq <cr> 
+
+" open horizontal terminal
+map <F2> :term <cr>
 
 " open vertical terminal
 map <F3> :vert :term <cr>
