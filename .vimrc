@@ -1,3 +1,4 @@
+" TESTING
 " <F3>  :  Open vertical terminal
 " <F4>  :  Save all and make (build) program using makefile
 " <F5>  :  Save file and compile and/or run program (for C, CPP and Python)
@@ -94,7 +95,8 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_posix_standard = 1
 
 """""""""""""""""" KEYMAPS """"""""""""""""""
-inoremap jk <ESC> 
+inoremap jk <ESC>
+vnoremap jk <ESC>
 map gh :w <cr> 
 map fj :wq <cr> 
 
@@ -103,7 +105,7 @@ map <F3> :vert :term <cr>
 
 " build c/cpp
 autocmd FileType cpp nnoremap <F4> :wa <cr> :!make && echo <cr>
-autocmd FileType cpp nnoremap <F4> :wa <cr> :!make && echo <cr>
+autocmd FileType c nnoremap <F4> :wa <cr> :!make && echo <cr>
 
 " compile and/or run (for c, cpp and python)
 autocmd FileType cpp nnoremap <F5> :w <cr> :!g++ % -o %< && ./%< && echo <cr>
@@ -167,3 +169,6 @@ set noshowmode
 let g:lightline = {
     \ 'colorscheme' : 'solarized'
     \ }
+
+set splitright
+set splitbelow 
