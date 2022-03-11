@@ -1,4 +1,3 @@
-" TESTING
 " <F3>  :  Open vertical terminal
 " <F4>  :  Save all and make (build) program using makefile
 " <F5>  :  Save file and compile and/or run program (for C, CPP and Python)
