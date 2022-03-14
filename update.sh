@@ -53,11 +53,11 @@ git commit -m 'update'
 git push origin main
 
 # just to make the success string look tidy
-if [ $wins > 1 ]
+if [ $wins == 1 ]
 then
-    word="files"
-else
     word="file"
+else
+    word="files"
 fi
 
 printf "\n${G}SUCCESS!${NC} $wins $word updated\n"
