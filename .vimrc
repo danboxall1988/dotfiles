@@ -6,6 +6,8 @@
 " <F7>  :  Compile file without running
 " <F8>  :  Run executable without compiling (assumes there is already an
 "          executable named the same as the file)
+" <F9>  :  Opens NERDTree file viewer 
+" <F12> :  Killall, without saving 
 " <C-h> :  Opens or creates header file with the same name as the c file
 " <C-n> :  Opens or creates a Makefile 
 " 
@@ -26,26 +28,86 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 
-Plugin 'git://git.wincent.com/command-t.git'
-
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
 " ColorScheme 
 Plugin 'https://github.com/mhartington/oceanic-next.git'
 
 " Awesome auto completer!!!
 Plugin 'https://github.com/jayli/vim-easycomplete.git'
-" All of your Plugins must be added before the following line
-
 
 " rainbow colored braces - match braces wtih ease!
 Plugin 'https://github.com/luochen1990/rainbow.git'
+
+" error highlighting"
+Plugin 'https://github.com/vim-syntastic/syntastic.git'
+
+" extra code highlighting"
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+" file viewer"
+Plugin 'https://github.com/preservim/nerdtree.git'
+
+"" auto-closing brackets. I've given it a slight edit though, so that curly
+" braces in functions line up properly"
+Plugin 'ClosePairs'
+
+" a nice-looking status bar "
+Plugin 'https://github.com/itchyny/lightline.vim.git'
+
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""STUFF FOR SYNTASTIC PLUGIN""""""""""""""""""""
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+"let g:syntastic_enable_balloons = 1
+let g:syntastic_auto_jump = 1
+let g:syntastic_loc_list_height = 5
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""" ENHANCED CPP HIGHLIGHTING """""""
+
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""" LIGHTLINE STATUS BAR SETUP """""""""""
+
+set laststatus=2
+set noshowmode
+let g:lightline={
+    \ 'colorscheme' : 'solarized'
+    \ }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""" AUTO-COMPLETOR """"""""""""""""""""""
+
+" this changes the color of the autocomplete menu
+autocmd VimEnter * highlight Pmenu ctermbg=gray
+
+" disable lsp server warning when opening files"
+let g:easycomplete_diagnostics_enable = 0
+let g:easycomplete_lsp_checking = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""" MAIN EDITOR STUFF """""""
 
 syntax on
 if (has("termguicolors"))
@@ -71,7 +133,7 @@ set backspace=2
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set expandtab " convert tabs to 4 spaces"
+set expandtab 
 
 " coding stuff
 set autoindent
@@ -87,12 +149,6 @@ let &t_EI = "\e[2 q"
 set cursorline
 set mouse=a
 
-" stuff for autocomplete 
-" this changes the color of the autocomplete menu
-autocmd VimEnter * highlight Pmenu ctermbg=gray
-
-let delimitMate_expand_cr = 0
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""" KEYMAPS """""""""""""""""""""""
@@ -103,6 +159,7 @@ let delimitMate_expand_cr = 0
 "  <F6>  :  Make and run main.exe
 "  <F7>  :  Compile c/cpp without running
 "  <F8>  :  Run c/cpp without compiling
+"  <F9>  :  nerdtree 
 "  <F12> :  Exit all without saving  (:qa!)
 "  <C-h> :  Open/create header file
 "  <C-n> :  Open/create makefile
@@ -114,31 +171,6 @@ vnoremap kj <ESC>
 map gh :w <cr>
 map fj :wq <cr>
 nnoremap <F12> :qa! <cr>
-
-nnoremap <BS> :call Backspace() <cr>
-
-function! Backspace()
-    let line = getline('.')
-    let char = l:line[col('.')-1]
-    let idx = col('.')-1
-    ""echo l:line
-    if (len(line) > 0)
-        echo printf("deleted char %s from line %d col %d\n", char, line, idx)
-
-         x
-    endif
-endfunction
-
-inoremap ' ''<left>
-inoremap " ""<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<cr> {<cr>}<esc>0
-inoremap {;<cr> {<cr><cr>};<up><tab>
-""inoremap {<cr> {<cr><cr>}<up><tab>
-""inoremap {<cr> {<cr>}<esc>0
-""inoremap {;<cr> {<cr>};<esc>0
 
 
 " open horizontal terminal
@@ -176,5 +208,5 @@ autocmd FileType cpp nnoremap <C-h> :vsplit %<.hpp <cr>
 autocmd FileType c nnoremap <C-n> :vsplit Makefile <cr>
 autocmd FileType cpp nnoremap <C-n> :vsplit Makefile <cr>
 
-
+map <F9> :NERDTree <cr>
 
