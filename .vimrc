@@ -1,3 +1,4 @@
+" <F2>  :  Open horzontal terminal
 " <F3>  :  Open vertical terminal
 " <F4>  :  Save all and make (build) program using makefile
 " <F5>  :  Save file and compile and/or run program (for C, CPP and Python)
@@ -149,6 +150,9 @@ let &t_EI = "\e[2 q"
 set cursorline
 set mouse=a
 
+set splitbelow 
+set splitright 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""" KEYMAPS """""""""""""""""""""""
@@ -171,7 +175,8 @@ vnoremap kj <ESC>
 map gh :w <cr>
 map fj :wq <cr>
 nnoremap <F12> :qa! <cr>
-
+nnoremap ty gt
+nnoremap yt gt
 
 " open horizontal terminal
 map <F2> :term <cr>
@@ -205,8 +210,8 @@ autocmd FileType c nnoremap <C-h> :vsplit %<.h <cr>
 autocmd FileType cpp nnoremap <C-h> :vsplit %<.hpp <cr>
 
 " makefile
-autocmd FileType c nnoremap <C-n> :vsplit Makefile <cr>
-autocmd FileType cpp nnoremap <C-n> :vsplit Makefile <cr>
+autocmd FileType c nnoremap <C-n> :tabe Makefile <cr>
+autocmd FileType cpp nnoremap <C-n> :tabe Makefile <cr>
 
 map <F9> :NERDTree <cr>
 
