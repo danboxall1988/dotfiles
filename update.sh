@@ -45,6 +45,7 @@ fi
 for file in $*
 do
     git add $file
+    printf "Adding $file to main\n"
 done
 
 
