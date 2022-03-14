@@ -48,6 +48,7 @@ do
     printf "Adding $file to main\n"
 done
 
+printf "\n"
 
 # commit and push the files
 git commit -m 'update'
