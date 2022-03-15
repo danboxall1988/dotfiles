@@ -8,12 +8,24 @@
 " <F8>  :  Run executable without compiling (assumes there is already an
 "          executable named the same as the file)
 " <F9>  :  Opens NERDTree file viewer 
+" <F11> :  Save all and exit
 " <F12> :  Killall, without saving 
 " <C-h> :  Opens or creates header file with the same name as the c file
 " <C-n> :  Opens or creates a Makefile 
-" 
+ 
+" fix meta-keys which generate <Esc>a .. <Esc>z
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
 
+set timeout ttimeoutlen=50
 
+""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""
+""""""""" REQUIRED FOR VUNDLE -- DO NOT DELETE   """""""""
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -33,7 +45,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'https://github.com/mhartington/oceanic-next.git'
 
 " Awesome auto completer!!!
-Plugin 'https://github.com/jayli/vim-easycomplete.git'
+""Plugin 'https://github.com/jayli/vim-easycomplete.git'
 
 " rainbow colored braces - match braces wtih ease!
 Plugin 'https://github.com/luochen1990/rainbow.git'
@@ -47,9 +59,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 " file viewer"
 Plugin 'https://github.com/preservim/nerdtree.git'
 
-"" auto-closing brackets. I've given it a slight edit though, so that curly
-" braces in functions line up properly"
-Plugin 'ClosePairs'
+Plugin 'https://github.com/jiangmiao/auto-pairs.git'
 
 " a nice-looking status bar "
 Plugin 'https://github.com/itchyny/lightline.vim.git'
@@ -103,12 +113,16 @@ let g:lightline={
 autocmd VimEnter * highlight Pmenu ctermbg=gray
 
 " disable lsp server warning when opening files"
-let g:easycomplete_diagnostics_enable = 0
-let g:easycomplete_lsp_checking = 0
+let g:easycomplete_diagnostics_enable = 1
+let g:easycomplete_lsp_checking = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""" MAIN EDITOR STUFF """""""
+
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutBackInstert = '<M-b>'
+let g:AutoPairsShortcutFastWrap = '<M-j>'
 
 syntax on
 if (has("termguicolors"))
@@ -163,7 +177,9 @@ set splitright
 "  <F6>  :  Make and run main.exe
 "  <F7>  :  Compile c/cpp without running
 "  <F8>  :  Run c/cpp without compiling
-"  <F9>  :  nerdtree 
+"  <F9>  :  Run main.exe - for sfml and sdl 
+"  <F10> :  Nerdtree
+"  <F11> :  Save all and exit
 "  <F12> :  Exit all without saving  (:qa!)
 "  <C-h> :  Open/create header file
 "  <C-n> :  Open/create makefile
@@ -174,9 +190,10 @@ inoremap kj <ESC>
 vnoremap kj <ESC>
 map gh :w <cr>
 map fj :wq <cr>
-nnoremap <F12> :qa! <cr>
 nnoremap ty gt
 nnoremap yt gt
+
+inoremap {;<cr> {<cr>};<esc>O
 
 " open horizontal terminal
 map <F2> :term <cr>
@@ -205,6 +222,18 @@ autocmd FileType c nnoremap <F7> :w <cr> :!gcc % -o %< && echo <cr>
 autocmd FileType cpp nnoremap <F8> :!./%< && echo <cr>
 autocmd FileType c nnoremap <F8> :!./%< && echo <cr>
 
+" run main - for cpp sfml and sdl"
+autocmd FileType cpp nnoremap <F9> :!./main && echo <cr>
+autocmd FileType c   nnoremap <F9> :!./main && echo <cr>
+
+map <F10> :NERDTree <cr>
+
+" Save all and exit"
+nnoremap <F11> :wqa <cr>
+
+" Exit all without saving"
+nnoremap <F12> :qa! <cr>
+
 " c and cpp header file
 autocmd FileType c nnoremap <C-h> :vsplit %<.h <cr>
 autocmd FileType cpp nnoremap <C-h> :vsplit %<.hpp <cr>
@@ -213,5 +242,4 @@ autocmd FileType cpp nnoremap <C-h> :vsplit %<.hpp <cr>
 autocmd FileType c nnoremap <C-n> :tabe Makefile <cr>
 autocmd FileType cpp nnoremap <C-n> :tabe Makefile <cr>
 
-map <F9> :NERDTree <cr>
-
+map <A-b> :term<cr>
