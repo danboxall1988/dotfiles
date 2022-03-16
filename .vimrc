@@ -12,7 +12,6 @@
 " <F12> :  Killall, without saving 
 " <C-h> :  Opens or creates header file with the same name as the c file
 " <C-n> :  Opens or creates a Makefile 
-"testing" 
 " fix meta-keys which generate <Esc>a .. <Esc>z
 let c='a'
 while c <= 'z'
