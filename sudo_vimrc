@@ -1,4 +1,4 @@
-"vimrc for sudo use
+"basic vimrc for editing files as sudo
 syntax on
 set number
 
