@@ -12,7 +12,7 @@ wins=0     #file counter
 # ensure at least one file is added
 if [ $# == 0 ]
 then
-    printf "\n${R}Failed the files!!!\n"
+    printf "\n${R}Failed: you forgot to add the files!!!\n"
     exit 1
 fi
 
@@ -26,7 +26,7 @@ do
     if [ ! -f "$file" ]
     then
         ((++fails))
-        printf "file ${R}$file${NC} does not exist!\n"
+        printf "File ${R}$file${NC} does not exist!!!\n"
     else
         ((++wins))
     fi
