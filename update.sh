@@ -62,4 +62,4 @@ else
     word="files"
 fi
 
-printf "\n${G}SUCCESS!${NC} $wins $word updated\n"
+printf "\n${G}SUCCESS!${NC} $wins $word updated\n\n"
