@@ -46,6 +46,8 @@ Plugin 'https://github.com/mhartington/oceanic-next.git'
 " Awesome auto completer!!!
 ""Plugin 'https://github.com/jayli/vim-easycomplete.git'
 
+Plugin 'https://github.com/ycm-core/YouCompleteMe.git'
+
 " rainbow colored braces - match braces wtih ease!
 Plugin 'https://github.com/luochen1990/rainbow.git'
 
@@ -83,6 +85,11 @@ let g:syntastic_check_on_wq = 0
 "let g:syntastic_enable_balloons = 1
 let g:syntastic_auto_jump = 1
 let g:syntastic_loc_list_height = 5
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""" YCM """"""""""""""""""""""""
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""

@@ -12,7 +12,7 @@ wins=0     #file counter
 # ensure at least one file is added
 if [ $# == 0 ]
 then
-    printf "\n${R}Failed:${NC} You forgot to add the files!!!\n"
+    printf "\n${R}Failed the files!!!\n"
     exit 1
 fi
 
