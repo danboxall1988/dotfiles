@@ -1,0 +1,26 @@
+# First of all, clone the files:
+git clone https://github.com/danboxall1988/dotfiles.git
+
+# You'll need to get Vundle before setting up vimrc
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# Then set up vimrc link so you can get all your plugins
+cd dotfiles && ln .vimrc ~/.vimrc
+# Then start Vim and install plugins - NOTE: COMMENT OUT YOUCOMPLETEME BEFORE DOING THIS, INSTALL YCM LATER
+
+# Now link the rest of the dotfiles
+ln .bash_aliases ~/.bash_aliases
+sudo ln sudo_bashrc /root/.bash_aliases
+sudo ln sudo_vimrc /root/.vimrc
+
+# Set permission for update.sh
+chmod 755 update.sh
+
+# Set up git for the dotfiles repo. Make a small change in one 
+# of the files, eg just add a blank line in .vimrc. Then update
+# it, but use this line first. it will ask for your username and
+# auth key, and then store them
+git config --global credential.helper store
+git add .vimrc
+git commit -m 'update'
+git push origin main
