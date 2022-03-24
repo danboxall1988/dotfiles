@@ -1,7 +1,7 @@
 #!/bin/bash
 
-G='\033[0;32m'
-R='\033[0;31m'
+G='\033[0;32m' # green
+R='\033[0;31m' # red
 NC='\033[0m' # No Color
 
 
@@ -12,7 +12,7 @@ wins=0     #file counter
 # ensure at least one file is added
 if [ $# == 0 ]
 then
-    printf "\n${R}Failed: you forgot to add the files!!!\n"
+    printf "\n${R}Failed:${NC} you forgot to add the files!!!\n"
     exit 1
 fi
 
