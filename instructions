@@ -24,3 +24,5 @@ git config --global credential.helper store
 git add .vimrc
 git commit -m 'update'
 git push origin main
+# Once you've done this, you'll be able to update using update.sh
+# in the future.

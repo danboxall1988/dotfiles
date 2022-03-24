@@ -38,14 +38,13 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" something to do with git - required for vundle
 Plugin 'tpope/vim-fugitive'
 
 " ColorScheme 
 Plugin 'https://github.com/mhartington/oceanic-next.git'
 
-" Awesome auto completer!!!
-""Plugin 'https://github.com/jayli/vim-easycomplete.git'
-
+" Excellent code completion
 Plugin 'https://github.com/ycm-core/YouCompleteMe.git'
 
 " rainbow colored braces - match braces wtih ease!
@@ -74,7 +73,7 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""STUFF FOR SYNTASTIC PLUGIN""""""""""""""""""""
 
-set statusline+=%#warningmsg#
+"set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
@@ -196,6 +195,8 @@ map gh :w <cr>
 map fj :wq <cr>
 nnoremap ty gt
 nnoremap yt gt
+map 0 ^
+map ^ <home>
 
 inoremap {;<cr> {<cr>};<esc>O
 
