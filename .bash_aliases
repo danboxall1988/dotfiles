@@ -1,3 +1,5 @@
+#export PATH="$PATH:/home/dan/.local/bin"
+
 # for compiling sfml test files without makefile
 sfml() {
     if [ $# != 2 ]
@@ -18,3 +20,4 @@ alias 'e'="exit"
 alias install="sudo apt install"
 alias remove="sudo apt purge"
 alias python="python3"
+alias c="clear"
