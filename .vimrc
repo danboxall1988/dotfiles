@@ -181,7 +181,7 @@ set splitright
 "  <F5>  :  Compile and/or run c/cpp/python
 "  <F6>  :  Make and run main.exe
 "  <F7>  :  Compile c/cpp without running
-"  <F8>  :  Run c/cpp without compiling
+"  <F8>  :  Compile and run using sfml bash function
 "  <F9>  :  Run main.exe - for sfml and sdl 
 "  <F10> :  Nerdtree
 "  <F11> :  Save all and exit
@@ -195,8 +195,6 @@ map gh :w <cr>
 map fj :wq <cr>
 nnoremap ty gt
 nnoremap yt gt
-map 0 ^
-map ^ <home>
 
 inoremap {;<cr> {<cr>};<esc>O
 
@@ -223,9 +221,8 @@ autocmd FileType c nnoremap <F6> :wa <cr> :!make && ./main && echo <cr>
 autocmd FileType cpp nnoremap <F7> :w <cr> :!g++ % -o %< && echo <cr>
 autocmd FileType c nnoremap <F7> :w <cr> :!gcc % -o %< && echo <cr>
 
-" run without compiling (assumes there is already an executable)
-autocmd FileType cpp nnoremap <F8> :!./%< && echo <cr>
-autocmd FileType c nnoremap <F8> :!./%< && echo <cr>
+" compile using sfml bash script then run
+autocmd FileType cpp nnoremap <F8> :w <cr> :!sfml % %< && ./%< && echo <cr>
 
 " run main - for cpp sfml and sdl"
 autocmd FileType cpp nnoremap <F9> :!./main && echo <cr>
