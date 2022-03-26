@@ -10,19 +10,6 @@
 "  <C-h> :  Open/create header file
 "  <C-n> :  Open/create makefile
 "
-"
-"
-" fix meta-keys which generate <Esc>a .. <Esc>z
-let c='a'
-while c <= 'z'
-  exec "set <A-".c.">=\e".c
-  exec "imap \e".c." <A-".c.">"
-  let c = nr2char(1+char2nr(c))
-endw
-
-set timeout ttimeoutlen=50
-
-""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""
 """"""""" REQUIRED FOR VUNDLE -- DO NOT DELETE   """""""""
 set nocompatible              " be iMproved, required
@@ -127,6 +114,15 @@ let g:easycomplete_lsp_checking = 1
 """"""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""" MAIN EDITOR STUFF """""""
 
+" fix meta-keys which generate <Esc>a .. <Esc>z
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+
+set timeout ttimeoutlen=50
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInstert = '<M-b>'
 let g:AutoPairsShortcutFastWrap = '<M-j>'
