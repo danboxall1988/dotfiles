@@ -1,4 +1,3 @@
-"""""""""""""""""""""""" KEYMAPS """""""""""""""""""""""
 "  <F2>  :  Open horizontal terminal
 "  <F3>  :  Open vertical terminal 
 "  <F4>  :  Make c/cpp
@@ -157,6 +156,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab 
+set clipboard=unnamedplus
 
 " coding stuff
 set autoindent
@@ -199,6 +199,8 @@ nnoremap yt gt
 
 inoremap {;<cr> {<cr>};<esc>O
 
+nnoremap <F9> :w <cr> :!sfml % && ./%< && echo <cr>
+
 " open horizontal terminal
 map <F2> :term <cr>
 
@@ -226,8 +228,8 @@ autocmd FileType c nnoremap <F7> :w <cr> :!gcc % -o %< && echo <cr>
 autocmd FileType cpp nnoremap <F8> :w <cr> :!sfml % %< && ./%< && echo <cr>
 
 " run main - for cpp sfml and sdl"
-autocmd FileType cpp nnoremap <F9> :!./main && echo <cr>
-autocmd FileType c   nnoremap <F9> :!./main && echo <cr>
+" autocmd FileType cpp nnoremap <F9> :!./main && echo <cr>
+" autocmd FileType c   nnoremap <F9> :!./main && echo <cr>
 
 " Exit all without saving"
 nnoremap <F12> :qa! <cr>
