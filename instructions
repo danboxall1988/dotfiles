@@ -1,3 +1,6 @@
+# When installing vim, install the full version:
+sudo apt install vim-gtk
+
 # First of all, clone the files:
 git clone https://github.com/danboxall1988/dotfiles.git
 
