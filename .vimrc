@@ -1,17 +1,18 @@
-" <F2>  :  Open horzontal terminal
-" <F3>  :  Open vertical terminal
-" <F4>  :  Save all and make (build) program using makefile
-" <F5>  :  Save file and compile and/or run program (for C, CPP and Python)
-" <F6>  :  Save all and make (build) and run C/CPP program (assumes exe named
-"          'main')
-" <F7>  :  Compile file without running
-" <F8>  :  Run executable without compiling (assumes there is already an
-"          executable named the same as the file)
-" <F9>  :  Opens NERDTree file viewer 
-" <F11> :  Save all and exit
-" <F12> :  Killall, without saving 
-" <C-h> :  Opens or creates header file with the same name as the c file
-" <C-n> :  Opens or creates a Makefile 
+"""""""""""""""""""""""" KEYMAPS """""""""""""""""""""""
+"  <F2>  :  Open horizontal terminal
+"  <F3>  :  Open vertical terminal 
+"  <F4>  :  Make c/cpp
+"  <F5>  :  Compile and/or run c/cpp/python
+"  <F6>  :  Make and run main.exe
+"  <F7>  :  Compile c/cpp without running
+"  <F8>  :  Compile and run using sfml bash function
+"  <F9>  :  Run main.exe - for sfml and sdl 
+"  <F12> :  Exit all without saving  (:qa!)
+"  <C-h> :  Open/create header file
+"  <C-n> :  Open/create makefile
+"
+"
+"
 " fix meta-keys which generate <Esc>a .. <Esc>z
 let c='a'
 while c <= 'z'
@@ -59,12 +60,14 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 " file viewer"
 Plugin 'https://github.com/preservim/nerdtree.git'
 
+" automatically closes braces
 Plugin 'https://github.com/jiangmiao/auto-pairs.git'
 
 " a nice-looking status bar "
 Plugin 'https://github.com/itchyny/lightline.vim.git'
 
-
+" Automatically comment out blocks of code
+Plugin 'https://github.com/tpope/vim-commentary.git'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -183,8 +186,6 @@ set splitright
 "  <F7>  :  Compile c/cpp without running
 "  <F8>  :  Compile and run using sfml bash function
 "  <F9>  :  Run main.exe - for sfml and sdl 
-"  <F10> :  Nerdtree
-"  <F11> :  Save all and exit
 "  <F12> :  Exit all without saving  (:qa!)
 "  <C-h> :  Open/create header file
 "  <C-n> :  Open/create makefile
@@ -227,11 +228,6 @@ autocmd FileType cpp nnoremap <F8> :w <cr> :!sfml % %< && ./%< && echo <cr>
 " run main - for cpp sfml and sdl"
 autocmd FileType cpp nnoremap <F9> :!./main && echo <cr>
 autocmd FileType c   nnoremap <F9> :!./main && echo <cr>
-
-map <F10> :NERDTree <cr>
-
-" Save all and exit"
-nnoremap <F11> :wqa <cr>
 
 " Exit all without saving"
 nnoremap <F12> :qa! <cr>
