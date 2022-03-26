@@ -187,7 +187,9 @@ set splitright
 "  <C-n> :  Open/create makefile
 "
 inoremap jk <ESC>
+inoremap kj <ESC>
 vnoremap df <ESC>
+vnoremap fd <ESC>
 map gh :w <cr>
 map fj :wq <cr>
 nnoremap ty gt
