@@ -4,8 +4,8 @@
 "  <F5>  :  Compile and/or run c/cpp/python
 "  <F6>  :  Make and run main.exe
 "  <F7>  :  Compile c/cpp without running
-"  <F8>  :  Compile and run using sfml bash function
-"  <F9>  :  Run main.exe - for sfml and sdl 
+"  <F8>  :  Save all and exit vim
+"  <F9>  :  Compile and run sfml test file 
 "  <F12> :  Exit all without saving  (:qa!)
 "  <C-h> :  Open/create header file
 "  <C-n> :  Open/create makefile
@@ -180,8 +180,8 @@ set splitright
 "  <F5>  :  Compile and/or run c/cpp/python
 "  <F6>  :  Make and run main.exe
 "  <F7>  :  Compile c/cpp without running
-"  <F8>  :  Compile and run using sfml bash function
-"  <F9>  :  Run main.exe - for sfml and sdl 
+"  <F8>  :  Save all and exit all
+"  <F9>  :  Compile and run test sfml file
 "  <F12> :  Exit all without saving  (:qa!)
 "  <C-h> :  Open/create header file
 "  <C-n> :  Open/create makefile
@@ -197,7 +197,6 @@ nnoremap yt gt
 
 inoremap {;<cr> {<cr>};<esc>O
 
-nnoremap <F9> :w <cr> :!sfml % && ./%< && echo <cr>
 
 " open horizontal terminal
 map <F2> :term <cr>
@@ -222,12 +221,12 @@ autocmd FileType c nnoremap <F6> :wa <cr> :!make && ./main && echo <cr>
 autocmd FileType cpp nnoremap <F7> :w <cr> :!g++ % -o %< && echo <cr>
 autocmd FileType c nnoremap <F7> :w <cr> :!gcc % -o %< && echo <cr>
 
-" compile using sfml bash script then run
-autocmd FileType cpp nnoremap <F8> :w <cr> :!sfml % %< && ./%< && echo <cr>
+" Save all and exit
+nnoremap <F8> :wqa <cr>
 
-" run main - for cpp sfml and sdl"
-" autocmd FileType cpp nnoremap <F9> :!./main && echo <cr>
-" autocmd FileType c   nnoremap <F9> :!./main && echo <cr>
+" compile single sfml test script using sfml function defined
+" in .bash_aliases
+autocmd FileType cpp nnoremap <F9> :w <cr> :!sfml % && ./%< && echo <cr>
 
 " Exit all without saving"
 nnoremap <F12> :qa! <cr>
@@ -239,5 +238,3 @@ autocmd FileType cpp nnoremap <C-h> :vsplit %<.hpp <cr>
 " makefile
 autocmd FileType c nnoremap <C-n> :tabe Makefile <cr>
 autocmd FileType cpp nnoremap <C-n> :tabe Makefile <cr>
-
-map <A-b> :term<cr>
