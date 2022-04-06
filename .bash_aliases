@@ -103,3 +103,7 @@ alias push="git push"
 alias pull="git pull"
 alias commit="git commit -m"
 alias add="git add"
+
+# Machine commands
+alias off="shutdown -P"
+alias reboot="shutdown -r"
