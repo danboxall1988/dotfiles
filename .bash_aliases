@@ -67,6 +67,7 @@ alias v="vim ~/.vimrc"
 alias vb="vim ~/.bash_aliases"
 alias vin="vim +PluginInstall +qall"
 alias sv="sudo vim"
+alias workspace="vim -S"
 
 # Easier than pressing g++
 alias gpp="g++"
