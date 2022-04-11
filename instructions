@@ -8,8 +8,9 @@ git clone https://github.com/danboxall1988/dotfiles.git
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # Then set up vimrc link so you can get all your plugins
+# IMPORTANT!!! -- COMMENT OUT YOUCOMPLETEME BEFORE DOING THIS, INSTALL YCM LATER 
 cd dotfiles && ln .vimrc ~/.vimrc
-# Then start Vim and install plugins - NOTE: COMMENT OUT YOUCOMPLETEME BEFORE DOING THIS, INSTALL YCM LATER
+# Then start Vim and install plugins - 
 
 # Now link the rest of the dotfiles
 ln .bash_aliases ~/.bash_aliases
