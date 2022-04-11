@@ -1,3 +1,4 @@
+"""""""""""""""""""""" KEYS """"""""""""""""""""""
 "  <F2>  :  Open horizontal terminal
 "  <F3>  :  Open vertical terminal 
 "  <F4>  :  Make c/cpp
@@ -174,18 +175,25 @@ set splitright
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""" KEYMAPS """""""""""""""""""""""
-"  <F2>  :  Open horizontal terminal
-"  <F3>  :  Open vertical terminal 
-"  <F4>  :  Make c/cpp
-"  <F5>  :  Compile and/or run c/cpp/python
-"  <F6>  :  Make and run main.exe
-"  <F7>  :  Compile c/cpp without running
-"  <F8>  :  Save all and exit all
-"  <F9>  :  Compile and run test sfml file
-"  <F12> :  Exit all without saving  (:qa!)
-"  <C-h> :  Open/create header file
-"  <C-n> :  Open/create makefile
-"
+
+fu! PrintKeymaps() 
+    echo "<F2>  :  Open horizontal terminal"
+    echo "<F3>  :  Open vertical terminal" 
+    echo "<F4>  :  Make c/cpp" 
+    echo "<F5>  :  Compile and/or run c/cpp/python"
+    echo "<F6>  :  Make and run main.exe"
+    echo "<F7>  :  Compile c/cpp without running"
+    echo "<F8>  :  Save all and exit all"
+    echo "<F9>  :  Compile and run test sfml file"
+    echo "<F12> :  Exit all without saving  (:qa!)"
+    echo "<C-h> :  Open/create header file"
+    echo "<C-n> :  Open/create makefile"
+endfunction
+
+" Command to remind me of my keymaps
+command Keys call PrintKeymaps()
+
+
 inoremap jk <ESC>
 inoremap kj <ESC>
 vnoremap df <ESC>
